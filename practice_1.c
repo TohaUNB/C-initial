@@ -251,10 +251,11 @@ void user_input(){
     getchar();// clears the newline character within the input buffer from immediate last scanf(in this case scanf(%s))
     printf("enter your full name");
     fgets(name, 30, stdin);//means file get string, 30= size of string, stdin=standard input
-    name[strlen(name)-1] = '\0'; //we did this to fix the fget printf(name) at the begining problem
+    name[strlen(name)-1] = '\0'; //we did this bc after fgets, theres is newline character at the end. to remove this we did this
 
     //why use fgets and not scanf("%s")?
     //thats because fgets can read a whole line along with the spaces in between, scanf cannot do that
+
 
     //fgets(name, sizeof(name), stdin); this also works, we are directly pulling the size ofname
     // printf("%d\n", age);

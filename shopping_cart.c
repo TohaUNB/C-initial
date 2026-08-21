@@ -9,19 +9,25 @@ int main(){
     char currency = '$';
     float total = 0.0f;
 
-    total = price*quantity;
+    
 
     printf("What item would you like to buy?: ");
-    scanf("%s", &name);
+    fgets(item, sizeof(item), stdin);
+
 
     printf("What is the price for the each?: ");
-    scanf("%f", &price)long
+    scanf("%f", &price);
 
     printf("How many would you like?: ");
     scanf("%d", &quantity);
 
-    printf("You have bought %d pizzas", &quantity);
-    printf("The total is: %f", total);
+    total = price*quantity;
+
+    printf("The total is: %c%.2f", currency, total);
+
+    
+
+
     return 0;
     
 }
