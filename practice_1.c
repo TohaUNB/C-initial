@@ -234,7 +234,13 @@ void user_input(){
     scanf("%f", &gpa);
 
     printf("enter your grade");
-    scanf(" %c", &grade); //space before c is beacuse there is a hidden \n after &gpa and
+    scanf(" %c", &grade); 
+
+    //-----------------------------------// 
+    //so basically scanf("%c")eats up the previous \n from  the prevoius scanf. and thats why after that 
+    //if you put a space before %c , it solves the problem. therefore scanf(" %c")
+
+    //space before c is beacuse there is a hidden \n after &gpa and
     //its putting a blank and not allowing me to type the grade
 
 
@@ -242,10 +248,13 @@ void user_input(){
     scanf("%s", &name);//means file get string
 
 
-    getchar();// clears the newline character within the input buffer
+    getchar();// clears the newline character within the input buffer from immediate last scanf(in this case scanf(%s))
     printf("enter your full name");
     fgets(name, 30, stdin);//means file get string, 30= size of string, stdin=standard input
     name[strlen(name)-1] = '\0'; //we did this to fix the fget printf(name) at the begining problem
+
+    //why use fgets and not scanf("%s")?
+    //thats because fgets can read a whole line along with the spaces in between, scanf cannot do that
 
     //fgets(name, sizeof(name), stdin); this also works, we are directly pulling the size ofname
     // printf("%d\n", age);
