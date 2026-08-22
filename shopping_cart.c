@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int main(){
     //Shopping cart program
@@ -13,6 +14,8 @@ int main(){
 
     printf("What item would you like to buy?: ");
     fgets(item, sizeof(item), stdin);
+    item[strlen(item) -1] = '\0';   //you need this to print the /s after "you have bought" to 
+    //remove the automatic extra newline character that fgets generates
 
 
     printf("What is the price for the each?: ");
@@ -23,7 +26,9 @@ int main(){
 
     total = price*quantity;
 
-    printf("The total is: %c%.2f", currency, total);
+    printf("\nYou have bought %d %s/s\n",quantity, item);
+
+    printf("The total is: %c%.2f", currency, total);//MULTIple variables by format specifier
 
     
 
