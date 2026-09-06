@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-
+#include <string.h>
 
 void switches(){
     int dayofweek = 0;
@@ -65,7 +65,74 @@ void nested_if_statements(){
     printf("%.2lf",price);
 
 }
+
+void logical_operators(){
+    //used to combine or modify boolean operators
+    // && =  and;
+    // || = Or;
+    // ! = not;
+}
+void function_birthday(char name[], int age){
+    //reusable sectionof code that can be called
+    printf("Happy birthday dear %s!\n", name);
+    printf("Your are %d years old!\n", age);
+
+    
+}
+
+
+//return usage
+int return_square(int num){
+    return num*num;   
+}
+
+double cube(double num){
+    return num*num*num;
+}
+
+int getmax(int x, int y){
+    if (x >=y){
+        return x;
+    }
+    else{
+        return y;
+    }
+}
 int main(){
+
+    //fucitons
+    char name[20] = "";
+    int age = 0;
+    printf("Enter your name: ");
+
+    fgets(name,sizeof(name), stdin);
+    name[strlen(name)-1] = '\0';
+
+    printf("enter your age: ");
+    scanf("%d", &age);
+    function_birthday(name, age);
+
+
+    //return: basically function er end result ta pull kore
+    //return  0 , always at the end of main funciton
+
+    int x = return_square(2);
+    int y = return_square(3);
+    int z = return_square(4);
+
+    printf("%d\n",x);
+    printf("%d\n",y);
+    printf("%d\n",z);
+
+
+    int f = cube(3.2);
+    printf("%.2f\n", f);
+
+
+    int max = getmax(2,3);
+    printf("%d", max);
+
+
     //switches();
     nested_if_statements();
 }
