@@ -108,11 +108,40 @@ void break_continue(){
 void nested_loops1(){
     for (int i = 1; i < 4 ; i++){ // VVVIMP --------OUTER LOOP BASICALLY MEANS "THIS IS HOW MANY TIMES THE WHOLE INNER LOOP WILL RUN"----
         for(int j = 0; j <10; j+=1){
-        
-        printf("%d", j);
+            printf("%d", j);
         }
         printf("\n");
 
+    }
+}
+
+void nested_loops2(){//multiplication table
+    for (int i = 1; i <=10; i++){
+        for (int j = 1; j <= 10; j++){
+            
+            printf("%3d ",i*j);
+        }
+        printf("\n");
+    }
+}
+
+void nested_loops3(){//rows cols
+
+    int row = 0;
+    int col = 0;
+    
+    char x = 'x';
+
+    printf("enter the rows: ");
+    scanf("%d", &row);
+    printf("enter the cols: ");
+    scanf("%d", &col);
+    for (int i = 0; i <=row; i++){
+        for (int j = 0; j <=col; j++){
+            
+            printf(" %c",x);
+        }
+        printf("\n");
     }
 }
 
@@ -131,13 +160,26 @@ int main() {
 
     //break_continue();
     //nested_loops1();
+    // nested_loops2();
+    nested_loops3();
     //prototype
 
     //hello("spongebob", 30);
 
 }
 
+void random_number(){ // just a formula to get a random number between uppper and lower limits
+    srand(time{NULL});
+
+    int min = 50;
+    int max = 100;
+
+    int randomNum = (rand() % (max - min + 1)) + min;
+}
+
 void hello(char name[], int age){  //-----------function_prototype--------------
     printf("hello %s\n", name);
     printf("you are %d years old\n", age);
 }
+
+
