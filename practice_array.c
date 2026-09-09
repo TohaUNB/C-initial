@@ -113,6 +113,9 @@ void array_2d_numpad(){
 
 
 void array_of_strings(){
+
+//The first bracket [rows] tells C how many strings (or items or words) you want to store.
+//The second bracket [columns] tells C how many characters/letters each individual string/word can hold.
     char fruits[][10] = {"apple",
                         "mango", 
                         "banana", 
@@ -124,8 +127,8 @@ void array_of_strings(){
     fruits[0][4] = 'a';
 
     for (int i = 0; i< size; i++){
-        printf("%s\n", fruits[i]);
-    }
+        printf("%s\n", fruits[i]);//Using One Bracket (fruits[i]) -> Refers to the entire string
+    }//fruits[0] represents "apple" and fruits[1] represents "mango"
 }
 
 void array_of_strings2(){//user inputs array of strings
@@ -137,11 +140,29 @@ void array_of_strings2(){//user inputs array of strings
     printf("%s\n", name[0]);
     
 }
+
+void array_of_strings3(){
+    char name[8][10] = {0};
+
+    int size  = sizeof(name) /sizeof(name[0]);
+
+    for (int i =0; i <size; i++){
+        printf("enter a name: ");
+        fgets(name[i], sizeof(name[i]), stdin);
+        name[i][strlen(name[i])-1] = '\0';
+        
+        
+    }
+    for (int i =0; i<size; i++){
+        printf("%s\n", name[i]);
+    }
+}
+
 int main() {
     // array();
     // array_userinput();
     //array2d();
     //array_2d_numpad();
-    array_of_strings2();
+    array_of_strings3();
     return 0;
 }
