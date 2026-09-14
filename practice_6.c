@@ -2,7 +2,11 @@
 #include <stdlib.h>
 
 
+
+//============================================================================================================
 int write_file(){
+//============================================================================================================
+
     FILE *pFile = fopen("output.txt", "w");//w mwns write mode for writing a file
     //absolute location - location with the whole link to the diretory;
     char text[] = "booty booty booty";
@@ -19,8 +23,10 @@ int write_file(){
 }
 
 
-
+//============================================================================================================
 int read_file(){
+//============================================================================================================
+
     
     FILE *pFile = fopen("roses are red.txt", "r");
     //buffer is a waitnig room that remprarily stores data 
@@ -43,7 +49,11 @@ int read_file(){
     return 0;;
 }
 
+
+//============================================================================================================
 int malloc_prac(){
+//============================================================================================================
+
     //malloc = a function that dynamically allocates a specified number of bytes in memory
     //ynamic memory allocation means reserving memory for your program while it is running (at runtime), 
     //rather than asking for a fixed amount of memory when the code is compiled.
@@ -98,8 +108,10 @@ int malloc_prac(){
     return 0;
 
 }
-
+//============================================================================================================
 int calloc_practice(){
+//============================================================================================================
+
     //calloc = contiguos allocation/ clear allocation
     //allocates memory dynamically and sets all allocated bytes to 0, effectively clears it
     //malloc is faster, but calloc() leads to less bugs
@@ -134,9 +146,14 @@ int calloc_practice(){
 
 }
 
+
+//============================================================================================================
 int realloc_prac(){
+//============================================================================================================
+
     //reallocation. resize previously allocated memory
     //realloc(ptr, bytes)
+
     int number = 0;
     printf("Enter the number of prices: ");
     scanf("%d", &number);
@@ -154,9 +171,40 @@ int realloc_prac(){
 
     }
 
-    for (int i = 0; i < number; i++){
+    //realloc 
+
+    int newNumber = 0;
+    printf("Enter a new Number of prices: ");
+    scanf("%d", &newNumber);
+
+    float *temp = realloc(prices, newNumber * sizeof(float));
+
+    if(temp ==NULL){
+        printf("could not reallocate memory!\n");
+        //return 1;
+    }
+
+    else{
+        prices = temp;
+        temp =NULL;
+
+        for (int i = 0; i < newNumber ; i++){
+        printf("enter price #%d: ", i+1);
+        scanf("%f", &prices[i]); 
+    
+    }
+
+        for (int i = 0; i < newNumber; i++){
         printf("$%.2f ", prices[i]);
     }
+
+    
+
+
+    }
+
+
+    
     free(prices);
     prices = NULL;
 
