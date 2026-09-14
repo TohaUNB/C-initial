@@ -15,6 +15,7 @@ int write_file(){
         printf("error opening file\n");
         return 1;
     }
+
     fprintf(pFile, "%s", text);
     printf("file was written succesfuly");
     fclose(pFile);//must close a file
@@ -44,7 +45,6 @@ int read_file(){
     }
 
 
-
     fclose(pFile);
     return 0;;
 }
@@ -61,12 +61,14 @@ int malloc_prac(){
     //previoysly we made arrays to have only a fixed size
     //Size can be determined dynamically based on user input or data.
 
+
     // char gradex[5] = {0}; thisis how we usually do it
+
 
     // char *grades = malloc(100); //Declare a pointer named grades that points to a char, 
     //and allocate 100 bytes of memory on the heap for it
-    int number;
 
+    int number;
     printf("enter the number of grades: ");
     scanf("%d", &number);
 
@@ -93,18 +95,15 @@ int malloc_prac(){
         printf("%c ", grades[i]);
     }
 
-//     How grades[i] works as a variable:
+//How grades[i] works as a variable:
 // grades is a pointer to the start of your allocated block of memory on the heap.
-
 // When you attach [i] to grades, C treats grades just like an array.
-
 // grades[0] is the 1st char variable in your memory block.
-
 // grades[1] is the 2nd char variable, grades[2] is the 3rd, and so on up to grades[number - 1].
+
     free(grades); // returning the rented space back to the operating system
     //think of pointers as a star shaped key they unlock a value at a memory address when you derefence them
     grades = NULL; //avooids dangling pointers
-
     return 0;
 
 }
@@ -121,6 +120,7 @@ int calloc_practice(){
     int number = 0;
     printf("enter the numberof players: ");
     scanf("%d", &number);
+
 
     // int *scores = malloc(number * sizeof(int)); // will give garbage values
     int *scores = calloc(number,  sizeof(int)); //sets to zero
@@ -139,8 +139,8 @@ int calloc_practice(){
 
     for (int i = 0; i < number; i++){
         printf("%d ", scores[i]);
-
     }
+
     free(scores);
     scores = NULL;
 
@@ -197,12 +197,8 @@ int realloc_prac(){
         for (int i = 0; i < newNumber; i++){
         printf("$%.2f ", prices[i]);
     }
-
-    
-
-
+  
     }
-
 
     
     free(prices);
