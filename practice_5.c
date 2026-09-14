@@ -47,6 +47,7 @@ void ternary_operator(){
 
 
 //--------------------------------------------------------------------//
+
 typedef int Number;
 typedef char String[50];
 // typedef char String[50]; can also be written as typedef char* String;
@@ -148,28 +149,23 @@ struct Student{
     bool isFulltime;
 };
 
-//typedef version
-typedef struct {
-    char name[20];
-    int age;
-    float gpa;
-    bool isFulltime;
-}Studentx;
+
+
+
 void printStudent(struct Student student);
 
 
 void struct_test(){
     struct Student student1 = {"Spongebob", 20, 3.2, true};
     struct Student student2 = {"Fazil", 70, 7.2, true};
-    Studentx student3 = {"Shaker", 55, 4.2, true};
     
 
 
     printf("%s\n", student1.name);
-    printf("%s\n", student3.name);
+    printf("%s\n", student2.name);
     printf("\n");
 
-    Studentx student4 = {0};
+    struct Student student4 = {0};
 
     //assign values to the empty string
     strcpy(student4.name, "Sandy");
@@ -177,30 +173,176 @@ void struct_test(){
     student4.gpa = 4.0;
     student4.isFulltime = true;
 
-    printStudent(student1);
-
-    
-
-
-
-    
-
+    printStudent(student1); 
+    printStudent(student4); 
     
 }
 
-void printStudent(struct Student student) {//pass a struct to a function
+void printStudent(struct Student student) {//"struct Student" is the data type here. "student" is the variable. 
+    //for eg. just like in  the normal parameter "int age", "int" is the data type and "age"  is the variable; 
     printf("%s\n", student.name);
     printf("%d\n", student.age);
     printf("%.2f\n", student.gpa);
     printf("%s\n", (student.isFulltime) ? "yes" : "no");
     printf("\n");
 }
+
+
+//=========================================================================//
+
+
+//typedef version example
+typedef struct {
+    char house_name[30];
+    int house_number;
+    float rent_price;
+    bool isAvailable;
+}House;//"House" is the type
+
+
+void printHouse(House house);
+void struct_test2(){
+    House house1 = {"MANKI VILLA", 838, 550.00f, true};
+    House house2 = {0};
+
+    strcpy(house1.house_name, "Regent st");
+    house2.house_number = 646;
+    house2.rent_price = 480.00f;
+    house2.isAvailable = false;
+
+    printHouse(house1); 
+    printHouse(house2); 
+    
+}
+
+void printHouse(House house) {
+    printf("%s\n", house.house_name);
+    printf("%d\n", house.house_number);
+    printf("%.2f\n", house.rent_price);
+    printf("%s\n", (house.isAvailable) ? "yes" : "no");
+    printf("\n");
+}
+
+//====================================================================//
+//arrays of struct = array where each element contains a struct
+//helps organixe and groups together related data
+
+
+typedef struct {
+    char model[24];
+    int year;
+    int price;
+}Car;
+
+void array_struct(){
+
+
+    Car cars[] = {{"mustang", 2025, 32000}, 
+                    {"corvette", 2026, 50000},
+                    {"challenger", 2030, 70000}};
+
+    int number = sizeof(cars)/sizeof(cars[0]);
+
+    for (int i = 0; i < number; i++){
+        printf("%s %d $%d\n", cars[i].model, cars[i].year, cars[i].price);
+    }
+
+    // Car car1 = {"mustang", 2025, 32000};
+    // Car car2 = {"corvette", 2026, 50000};
+    // Car car3 = {"challenger", 2030, 70000};
+
+    // printf("%s %d $%d\n", car1.model, car1.year, car1.price);
+    // printf("%s %d $%d\n", car2.model, car2.year, car2.price);
+    // printf("%s %d $%d\n", car3.model, car3.year, car3.price);
+
+}
+
+
+//===========================================================================//
+//POINTERS:
+//pointer = a variable that stores the memory address of another variable
+// benefits = theyhelp avoid wasting memory by allowing you to pass the address
+// of a large data structure instead of copying entire data
+void birthday(int* age);
+void pointers(){
+
+
+int age = 25;
+int *pAge = &age; //store the value of age in to the pointer called pAge
+
+printf("%p\n", &age);// this gives me the actual address, not teh value. %p means return a pointer adress
+printf("%p\n", pAge); //pAge is the pointer variable. * is the dereferencing sign. 
+// * basically points to the actual value
+// int *pAge = &age;  means pAge is a pointer variable which points to the value stored at the
+//address of &age with the help of the dereferencing symbol *
+
+birthday(pAge); // we are passing a pointer here for the parameter
+birthday(&age); //same as birthday(pAge);
+printf("You are %d years old",age);
+
+
+}
+
+void birthday(int* age){//fucntion to increment age
+    //fucntions in c are pass by value
+
+    (*age)++;
+}
+
+
+
+//=======================================================================//
+// C is pass by value
+// In C, all arguments are passed by value. This means when you pass a variable into a function, C creates a local copy of that variable inside the function. 
+// Any modifications made to that variable inside the function only affect the copy, leaving the original variable in the calling function untouched.
+// why my initial code didnt work
+// initial code
+
+
+// void birthday(int age) {
+//     age = age + 1; // Only modifies the local copy!
+// }
+
+// void pointers() {
+//     int age = 25;
+//     birthday(age); // 'age' here remains 25
+//     printf("You are %d years old\n", age); // Printed 25
+// }
+
+// this is what i wrote initially and it doesnt work because void birthday doesnt return an integer
+// and here birthday() received a temporary copy of age (value 25). It incremented the copy to 26 and 
+// then immediately threw that copy away when the function ended. The original age in pointers() was never modified.
+
+
+// but here 
+
+// int birthday(int age) {
+//     return age + 1; // Evaluates copy + 1 (26) and returns it
+// }
+
+// void pointers() {
+//     int age = 25;
+    
+    
+//     age = birthday(age); 
+
+//     printf("You are %d years old\n", age); 
+// }
+
+// used the return value of birthday(age) and assigned it back to age (age = birthday(age);). 
+// This explicitly updated the memory location of age inside pointers(). so here it means the copy was actually updated, 
+// but finally the original value was replaced by the copy through return
+
+
+//===================================================================================//
 int main(){
     // ternary_operator();
     //typedef_explain();
     // enums2();
     // enums3();
-    struct_test();
+    // struct_test();
+    // array_struct();
+    pointers();
     
     return 0;
 }
