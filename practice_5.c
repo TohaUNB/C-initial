@@ -1,4 +1,14 @@
-//ternary operator
+/*
+CONTENTS
+1. Ternary operator
+2. typedef
+3. enum
+4. struct
+5. typedef struct
+6. array struct
+7. pointers
+*/
+
 
 #include <stdio.h>
 #include <stdbool.h>

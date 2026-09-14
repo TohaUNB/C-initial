@@ -1,3 +1,9 @@
+/*
+CONTENTS
+1. Math signs
+2. If statements
+*/
+
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>

@@ -1,3 +1,12 @@
+/*
+CONTENTS
+1. Write file
+2. Read file
+3. Malloc
+4. Calloc
+5. Realloc
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

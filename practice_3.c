@@ -1,3 +1,12 @@
+/*
+CONTENTS
+1. Switches
+2. Nested if statements
+3. Logical operators
+4. Function
+5. Return
+*/
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>

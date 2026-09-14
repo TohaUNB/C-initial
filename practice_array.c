@@ -1,4 +1,8 @@
-//practice arrays
+/*
+CONTENTS
+1. Everything about array
+*/
+
 
 #include <stdio.h>
 #include <string.h>

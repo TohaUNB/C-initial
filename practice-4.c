@@ -1,3 +1,15 @@
+/*
+CONTENTS
+1. Variable scope
+2. Function prototype
+3. While loop
+4. For loop
+5. Break 
+6. Continue
+7. Nested loop
+8. Random number
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -14,7 +26,7 @@ void variable_scope(){
 
 }
 
-int add(int x, int y){//forunderstanding scope
+int add(int x, int y){//for understanding scope
     int result = x+y;
     return result;
 }
