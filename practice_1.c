@@ -22,15 +22,17 @@ void topic_variables(){
 
     printf("You are %d years old\n", age);
     printf("The year is %d\n", year);
-
+    
 
 
     float gpa = 2.5;
     printf("Your gpa is %f\n",  gpa);
-    /// c has the default behavior of displaying 6 digits after the decimal ///
+    /// c has the default behavior of displaying 6 digits after the decimal /// 
+
     float price = 19.99;
     printf("The price is $%.2f\n", price);
     /* to disply only a fixed number of digits after the deecimal we use .1 or .2 depending on how many digits we want to show */
+
     float temperature = -10.1;
     printf("the temperature is %f\n", temperature);
 
@@ -58,6 +60,24 @@ void topic_variables(){
 
     char name[] = "Toha";
     char food[] = "Burger";
+
+    /*
+    ****************difference between char name[] = "toha"; and char name[30] = "toha"; ***************************
+
+    1. char name[] = "toha"; (Implicit Sizing)
+    Size in Memory: Exactly 5 bytes.
+    How it works: C automatically counts the characters in "toha" (4 letters) and adds 1 extra hidden byte for the null terminator ('\0') at the end to mark where the string ends.
+    Memory Breakdown: ['t', 'o', 'h', 'a', '\0']
+    Limitation: You cannot copy a longer string (like "toha noor") into this array later because it only has enough room for 5 characters total.
+
+    2. char name[30] = "toha"; (Explicit Sizing)
+    Size in Memory: Exactly 30 bytes.
+    How it works: C reserves a fixed block of 30 bytes in memory. It puts "toha" and the null terminator ('\0') in the first 5 slots, and fills the remaining 25 slots with zeros ('\0').
+    Memory Breakdown: ['t', 'o', 'h', 'a', '\0', '\0', '\0', ... (up to 30 slots)]
+    Advantage: You have plenty of extra room to modify or append to the string later (e.g., using strcpy() or strcat()) as long as the new text fits within 29 printable characters plus the null terminator.
+    */
+
+    
 
     printf("Hello %s\n", name);
     printf("Your favorite food is %s\n", food);
@@ -200,7 +220,7 @@ void arithmetic_operators(){
 
 
     
-    return 0;
+    
 
 
 
@@ -236,8 +256,8 @@ void user_input(){
 
 
     getchar();// clears the newline character within the input buffer from immediate last scanf(in this case scanf(%s))
-    printf("enter your full name");
-    fgets(name, 30, stdin);//means file get string, 30= size of string, stdin=standard input
+    printf("enter your full name: ");
+    fgets(name, 30, stdin);//means file get string, 30= size of string, stdin=standard input , used instead of scanf for string only. all the other variables uses scanf
     name[strlen(name)-1] = '\0'; //we did this bc after fgets, theres is newline character at the end. to remove this we did this
 
     //why use fgets and not scanf("%s")?
@@ -265,12 +285,15 @@ void user_input(){
     
 }
 
+
 int main(){
     topic_variables();
     format_specifier();
-    topic_pointers();
     arithmetic_operators();
     user_input();
+
+  
     
     return 0;
 }
+
